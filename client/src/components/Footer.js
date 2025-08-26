@@ -22,10 +22,9 @@ const Footer = () => {
         <div className="footer-section">
           <h4>Follow Us</h4>
           <div className="social-icons">
-            {/* Placeholder for social media icons */}
-            <a href="#" className="social-icon">FB</a>
-            <a href="#" className="social-icon">TW</a>
-            <a href="#" className="social-icon">LI</a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="social-icon">FB</a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-icon">TW</a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-icon">LI</a>
           </div>
         </div>
       </div>
