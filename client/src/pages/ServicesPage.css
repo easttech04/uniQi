@@ -7,7 +7,7 @@
   max-width: 800px;
   margin: 1rem auto 3rem auto;
   font-size: 1.1rem;
-  color: #666;
+  color: var(--text-color);
 }
 
 .service-section {

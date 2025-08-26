@@ -1,8 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
 import './Navbar.css';
 
 const Navbar = () => {
+  const { cartItems } = useCart();
+  const cartItemCount = cartItems.reduce((count, item) => count + item.quantity, 0);
+
   return (
     <nav className="navbar">
       <div className="navbar-container">
@@ -33,6 +37,11 @@ const Navbar = () => {
           <li className="nav-item">
             <Link to="/contact" className="nav-links">
               Contact
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/cart" className="nav-links cart-link">
+              Cart ({cartItemCount})
             </Link>
           </li>
         </ul>

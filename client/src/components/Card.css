@@ -1,5 +1,5 @@
 .card {
-  background: #fff;
+  background: var(--white-color);
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -33,6 +33,6 @@
 
 .card-description {
   font-size: 1rem;
-  color: #666;
+  color: var(--text-color);
   flex-grow: 1; /* Allow description to take up remaining space */
 }
