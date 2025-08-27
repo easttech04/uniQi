@@ -4,8 +4,7 @@ import { useCart } from '../context/CartContext';
 import './Navbar.css';
 
 const Navbar = () => {
-  const { cartItems } = useCart();
-  const cartItemCount = cartItems.reduce((count, item) => count + item.quantity, 0);
+  const { cartItemCount } = useCart();
 
   return (
     <nav className="navbar">

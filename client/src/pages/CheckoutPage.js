@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { useCart } from '../context/CartContext';
+import { useNavigate } from 'react-router-dom';
 import './CheckoutPage.css';
 
 const CheckoutPage = () => {
-  const { cartItems } = useCart();
+  const { cartItems, cartTotal, clearCart } = useCart();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -18,12 +20,41 @@ const CheckoutPage = () => {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // In a real app, this would trigger payment processing
-    // and then create an order on the backend.
-    console.log('Checkout submitted:', { formData, cartItems });
-    alert('Thank you for your order! (This is a demo)');
+
+    const orderData = {
+      customer: formData,
+      products: cartItems.map(item => ({
+        productId: item.id,
+        title: item.title,
+        quantity: item.quantity,
+        price: item.price,
+      })),
+      totalPrice: parseFloat(cartTotal),
+    };
+
+    try {
+      const response = await fetch('http://localhost:5000/api/orders', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(orderData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to create order');
+      }
+
+      alert('Thank you for your order!');
+      clearCart();
+      navigate('/'); // Redirect to home page
+
+    } catch (error) {
+      console.error('Error creating order:', error);
+      alert('There was an error placing your order. Please try again.');
+    }
   };
 
   if (cartItems.length === 0) {

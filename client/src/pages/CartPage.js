@@ -4,16 +4,7 @@ import { Link } from 'react-router-dom';
 import './CartPage.css';
 
 const CartPage = () => {
-  const { cartItems, removeFromCart, updateQuantity } = useCart();
-
-  const calculateTotal = () => {
-    // A simple price parser, assuming format is "$99.99"
-    // A more robust solution would handle different formats or use numeric prices
-    return cartItems.reduce((total, item) => {
-      const price = parseFloat(item.price.replace('$', ''));
-      return total + price * item.quantity;
-    }, 0).toFixed(2);
-  };
+  const { cartItems, removeFromCart, updateQuantity, cartTotal } = useCart();
 
   return (
     <div className="cart-page">
@@ -47,7 +38,7 @@ const CartPage = () => {
           </div>
           <div className="cart-summary">
             <h2>Cart Summary</h2>
-            <p>Total: ${calculateTotal()}</p>
+            <p>Total: ${cartTotal}</p>
             <Link to="/checkout" className="btn checkout-btn">Proceed to Checkout</Link>
           </div>
         </div>
