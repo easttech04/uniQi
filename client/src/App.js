@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import ServicesPage from './pages/ServicesPage';
-import ProductsPage from './pages/ProductsPage';
+import ShopPage from './pages/ShopPage';
 import ProductDetailsPage from './pages/ProductDetailsPage';
 import CartPage from './pages/CartPage';
 import CheckoutPage from './pages/CheckoutPage';
@@ -13,6 +13,7 @@ import AdminLayout from './components/AdminLayout';
 import DashboardPage from './pages/admin/DashboardPage';
 import OrdersPage from './pages/admin/OrdersPage';
 import UsersPage from './pages/admin/UsersPage';
+import ProductsManagementPage from './pages/admin/ProductsManagementPage';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import { CartProvider } from './context/CartContext';
@@ -29,7 +30,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/services" element={<ServicesPage />} />
-            <Route path="/products" element={<ProductsPage />} />
+            <Route path="/shop" element={<ShopPage />} />
             <Route path="/product/:id" element={<ProductDetailsPage />} />
             <Route path="/cart" element={<CartPage />} />
             <Route path="/checkout" element={<CheckoutPage />} />
@@ -39,6 +40,7 @@ function App() {
               <Route path="dashboard" element={<DashboardPage />} />
               <Route path="orders" element={<OrdersPage />} />
               <Route path="users" element={<UsersPage />} />
+              <Route path="products" element={<ProductsManagementPage />} />
               {/* Add other admin routes here */}
             </Route>
           </Routes>

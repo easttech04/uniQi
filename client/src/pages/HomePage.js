@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import BackgroundAnimation from '../components/BackgroundAnimation';
 import './HomePage.css';
 
 const HomePage = () => {
@@ -7,6 +8,7 @@ const HomePage = () => {
     <div className="home-page">
       {/* Hero Section */}
       <header className="hero-section">
+        <BackgroundAnimation />
         <div className="hero-content">
           <h1>Innovative Solutions for Aviation & Industry</h1>
           <p>Delivering excellence and reliability in every project.</p>
