@@ -1,0 +1,46 @@
+.admin-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.admin-sidebar {
+  width: 250px;
+  background-color: var(--dark-bg-color);
+  color: var(--white-color);
+  padding: 1rem;
+}
+
+.admin-sidebar-header {
+  text-align: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid #444;
+}
+
+.admin-sidebar-header h2 {
+  margin: 0;
+}
+
+.admin-nav ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 2rem;
+}
+
+.admin-nav li a {
+  display: block;
+  color: var(--white-color);
+  text-decoration: none;
+  padding: 1rem;
+  border-radius: 5px;
+  transition: background-color 0.2s;
+}
+
+.admin-nav li a:hover {
+  background-color: #444;
+}
+
+.admin-main-content {
+  flex-grow: 1;
+  padding: 2rem;
+  background-color: var(--light-bg-color);
+}
