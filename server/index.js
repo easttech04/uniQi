@@ -24,34 +24,32 @@ connection.once('open', () => {
 
 const Role = require('./models/Role');
 
-function initial() {
-  Role.estimatedDocumentCount((err, count) => {
-    if (!err && count === 0) {
-      new Role({
+async function initial() {
+  try {
+    const count = await Role.estimatedDocumentCount();
+
+    if (count === 0) {
+      await new Role({
         name: "Sales",
         permissions: ["MANAGE_ORDERS", "MANAGE_PRODUCTS", "VIEW_REPORTS"]
-      }).save(err => {
-        if (err) console.log("error", err);
-        console.log("added 'Sales' to roles collection");
-      });
+      }).save();
+      console.log("added 'Sales' to roles collection");
 
-      new Role({
+      await new Role({
         name: "System Administrator",
         permissions: ["MANAGE_USERS", "MANAGE_ROLES", "MANAGE_WEBSITE_CONTENT"]
-      }).save(err => {
-        if (err) console.log("error", err);
-        console.log("added 'System Administrator' to roles collection");
-      });
+      }).save();
+      console.log("added 'System Administrator' to roles collection");
 
-      new Role({
+      await new Role({
         name: "Super Admin",
         permissions: ["ALL"] // Super admin has all permissions
-      }).save(err => {
-        if (err) console.log("error", err);
-        console.log("added 'Super Admin' to roles collection");
-      });
+      }).save();
+      console.log("added 'Super Admin' to roles collection");
     }
-  });
+  } catch (err) {
+    console.error("Error initializing roles:", err);
+  }
 }
 
 // API Routes
