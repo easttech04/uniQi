@@ -16,6 +16,7 @@ import UsersPage from './pages/admin/UsersPage';
 import ProductsManagementPage from './pages/admin/ProductsManagementPage';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import ThemeSwitcher from './components/ThemeSwitcher';
 import { CartProvider } from './context/CartContext';
 import './App.css';
 
@@ -25,6 +26,7 @@ function App() {
       <Router>
         <div className="App">
           <Navbar />
+          <ThemeSwitcher />
         <main>
           <Routes>
             <Route path="/" element={<HomePage />} />

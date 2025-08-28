@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
-:root {
+:root, .theme-light {
   --primary-color: #03A9F4; /* The blue I've been using */
   --primary-dark-color: #0288D1;
   --secondary-color: #607D8B; /* The grey I've been using */
@@ -11,6 +11,29 @@
   --white-color: #fff;
 }
 
+.theme-dark {
+  --primary-color: #00BCD4; /* Cyan */
+  --primary-dark-color: #0097A7;
+  --secondary-color: #9E9E9E; /* Grey */
+  --secondary-dark-color: #616161;
+  --text-color: #f5f5f5;
+  --light-bg-color: #424242;
+  --dark-bg-color: #212121;
+  --white-color: #303030; /* Dark background for cards etc. */
+}
+
+.theme-corporate {
+  --primary-color: #1976D2; /* A corporate blue */
+  --primary-dark-color: #1565C0;
+  --secondary-color: #757575; /* A corporate grey */
+  --secondary-dark-color: #424242;
+  --text-color: #212121;
+  --light-bg-color: #f5f5f5;
+  --dark-bg-color: #37474F;
+  --white-color: #fff;
+}
+
+
 body {
   margin: 0;
   padding: 0;
@@ -20,6 +43,7 @@ body {
   background-color: var(--white-color);
   color: var(--text-color);
   line-height: 1.6;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 h1, h2, h3, h4, h5, h6 {
