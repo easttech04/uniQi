@@ -25,10 +25,12 @@ connection.once('open', () => {
 const ordersRouter = require('./routes/orders');
 const productsRouter = require('./routes/products');
 const usersRouter = require('./routes/users');
+const statsRouter = require('./routes/stats');
 
 app.use('/api/orders', ordersRouter);
 app.use('/api/products', productsRouter);
 app.use('/api/users', usersRouter);
+app.use('/api/stats', statsRouter);
 
 app.get('/api', (req, res) => {
   res.send('Hello from UniQi API!');
