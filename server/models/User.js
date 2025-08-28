@@ -10,14 +10,26 @@ const userSchema = new Schema({
     trim: true,
     minlength: 3
   },
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+    trim: true,
+  },
   password: {
     type: String,
     required: true,
   },
-  isAdmin: {
+  roles: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Role'
+  }],
+  isVerified: {
     type: Boolean,
     default: false,
   },
+  verificationToken: String,
+  verificationTokenExpires: Date,
 }, {
   timestamps: true,
 });

@@ -69,3 +69,11 @@
   background-color: var(--primary-dark-color);
   border-bottom: none;
 }
+
+.logout-btn {
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+}

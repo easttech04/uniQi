@@ -1,32 +1,36 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 import './LoginPage.css';
 
 const LoginPage = () => {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate();
+  const [error, setError] = useState('');
+  const { login } = useAuth();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    // In a real app, you would call an authentication API.
-    // For now, we'll just simulate a successful login and redirect.
-    console.log('Logging in with:', { username, password });
-    alert('Login successful! (This is a demo)');
-    navigate('/admin/dashboard');
+    setError('');
+    try {
+      await login(email, password);
+      // Navigation will be handled by the login function in AuthContext
+    } catch (err) {
+      setError(err.message);
+    }
   };
 
   return (
     <div className="login-page">
       <form className="login-form" onSubmit={handleLogin}>
         <h2>Admin Login</h2>
+        {error && <p className="error-message">{error}</p>}
         <div className="form-group">
-          <label htmlFor="username">Username</label>
+          <label htmlFor="email">Email</label>
           <input
-            type="text"
-            id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            type="email"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
         </div>

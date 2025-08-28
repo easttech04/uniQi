@@ -14,18 +14,23 @@ import DashboardPage from './pages/admin/DashboardPage';
 import OrdersPage from './pages/admin/OrdersPage';
 import UsersPage from './pages/admin/UsersPage';
 import ProductsManagementPage from './pages/admin/ProductsManagementPage';
+import SalesDashboardPage from './pages/admin/SalesDashboardPage';
+import VerificationPage from './pages/VerificationPage';
+import PrivateRoute from './components/auth/PrivateRoute';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ThemeSwitcher from './components/ThemeSwitcher';
 import { CartProvider } from './context/CartContext';
+import { AuthProvider } from './context/AuthContext';
 import './App.css';
 
 function App() {
   return (
-    <CartProvider>
-      <Router>
-        <div className="App">
-          <Navbar />
+    <Router>
+      <AuthProvider>
+        <CartProvider>
+          <div className="App">
+            <Navbar />
           <ThemeSwitcher />
         <main>
           <Routes>
@@ -38,19 +43,24 @@ function App() {
             <Route path="/checkout" element={<CheckoutPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/login" element={<LoginPage />} />
-            <Route path="/admin" element={<AdminLayout />}>
-              <Route path="dashboard" element={<DashboardPage />} />
-              <Route path="orders" element={<OrdersPage />} />
-              <Route path="users" element={<UsersPage />} />
-              <Route path="products" element={<ProductsManagementPage />} />
-              {/* Add other admin routes here */}
+            <Route path="/verify/:token" element={<VerificationPage />} />
+            {/* Protected Admin Routes */}
+            <Route element={<PrivateRoute />}>
+              <Route path="/admin" element={<AdminLayout />}>
+                <Route path="dashboard" element={<DashboardPage />} />
+                <Route path="sales-dashboard" element={<SalesDashboardPage />} />
+                <Route path="orders" element={<OrdersPage />} />
+                <Route path="users" element={<UsersPage />} />
+                <Route path="products" element={<ProductsManagementPage />} />
+              </Route>
             </Route>
           </Routes>
         </main>
         <Footer />
-        </div>
-      </Router>
-    </CartProvider>
+          </div>
+        </CartProvider>
+      </AuthProvider>
+    </Router>
   );
 }
 

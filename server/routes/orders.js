@@ -1,10 +1,11 @@
 const router = require('express').Router();
 let Order = require('../models/Order');
+const { protect, authorize } = require('../middleware/authMiddleware');
 
 // @route   GET /api/orders
 // @desc    Get all orders
 // @access  Private (for admin)
-router.get('/', async (req, res) => {
+router.get('/', protect, authorize('Sales', 'System Administrator', 'Super Admin'), async (req, res) => {
   try {
     const orders = await Order.find().sort({ createdAt: -1 });
     res.json(orders);
