@@ -1,0 +1,38 @@
+.card {
+  background: var(--white-color);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.2s;
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Make card take full height of its container */
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 1.5rem;
+  flex-grow: 1; /* Allow content to grow and fill available space */
+  display: flex;
+  flex-direction: column;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  margin: 0 0 0.5rem 0;
+}
+
+.card-description {
+  font-size: 1rem;
+  color: var(--text-color);
+  flex-grow: 1; /* Allow description to take up remaining space */
+}

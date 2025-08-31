@@ -1,0 +1,29 @@
+.stats-card {
+  display: flex;
+  align-items: center;
+  background: var(--white-color);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  flex-grow: 1;
+}
+
+.stats-card-icon {
+  font-size: 2.5rem;
+  margin-right: 1.5rem;
+  color: var(--primary-color);
+}
+
+.stats-card-info h4 {
+  margin: 0;
+  font-size: 1rem;
+  color: #666;
+  text-transform: uppercase;
+}
+
+.stats-card-info p {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--text-color);
+}
